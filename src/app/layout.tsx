@@ -1,22 +1,27 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+import { Outfit } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
+const fontSans = Outfit({
+  // Google Font
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  subsets: ['latin', 'latin-ext'],
 });
+
 const geistMono = localFont({
+  // Local Font
   src: './fonts/GeistMonoVF.woff',
   variable: '--font-geist-mono',
   weight: '100 900',
 });
 
 export const metadata: Metadata = {
-  title: 'Next 14 Boilarplate',
-  description: 'Configured by tam11a',
+  // Metadata
+  title: 'Next 14 - TypeScript Boilarplate',
+  description: 'Configured by <tam11a>',
 };
 
 export default function RootLayout({
@@ -27,9 +32,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={cn(geistSans.variable, geistMono.variable, `antialiased`)}
+        className={cn(fontSans.className, geistMono.variable, `antialiased`)}
       >
-        {children}
+        <AntdRegistry>{children}</AntdRegistry>
       </body>
     </html>
   );
