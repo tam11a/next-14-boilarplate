@@ -1,6 +1,6 @@
+import LoginForm from '@/app/components/login/form';
+import DataTable from '@/app/components/table/data-table';
 import { Button } from 'antd';
-import LoginForm from './components/login/form';
-import DataTable from './components/table/data-table';
 
 export default function Home() {
   return (
