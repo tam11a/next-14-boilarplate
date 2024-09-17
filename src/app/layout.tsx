@@ -5,6 +5,7 @@ import './globals.css';
 import { cn } from '@/lib/utils';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import TanstackContexts from './tanstack-context';
+import { CookiesProvider } from 'next-client-cookies/server';
 
 const fontSans = Outfit({
   // Google Font
@@ -35,9 +36,11 @@ export default function RootLayout({
       <body
         className={cn(fontSans.className, geistMono.variable, `antialiased`)}
       >
-        <TanstackContexts>
-          <AntdRegistry>{children}</AntdRegistry>
-        </TanstackContexts>
+        <CookiesProvider>
+          <TanstackContexts>
+            <AntdRegistry>{children}</AntdRegistry>
+          </TanstackContexts>
+        </CookiesProvider>
       </body>
     </html>
   );
