@@ -1,5 +1,6 @@
-import LoginForm from './components/login/form';
 import { Button } from 'antd';
+import LoginForm from './components/login/form';
+import DataTable from './components/table/data-table';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <Button type='text'>Hello World</Button>
       </div>
       <LoginForm />
+      <DataTable />
     </main>
   );
 }
