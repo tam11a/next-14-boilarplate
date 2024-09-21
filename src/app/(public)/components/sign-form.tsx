@@ -1,37 +1,54 @@
 'use client';
 
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Card, Checkbox, Form, Input } from 'antd';
 import React from 'react';
 
 export function SignForm() {
   return (
     <>
-      <Form layout='vertical'>
-        <Form.Item<SignTypes>
-          label='Username'
-          name='username'
-          rules={[{ required: true, message: 'Please input your username!' }]}
-        >
-          <Input />
-        </Form.Item>
+      <div className='pb-10 text-center'>
+        <h1 className='pb-1 text-2xl font-bold'>Welcome</h1>
+        <p className='font-medium'>
+          Sign in with your organization credentials.
+        </p>
+      </div>
+      <Card className='shadow-md'>
+        <Form layout='vertical' className='font-semibold' requiredMark={false}>
+          <Form.Item<SignTypes>
+            label='Username'
+            name='username'
+            style={{ marginBottom: '12px' }}
+            rules={[{ required: true }]}
+          >
+            <Input placeholder='JhonDoe12' size='large' />
+          </Form.Item>
 
-        <Form.Item<SignTypes>
-          label='Password'
-          name='password'
-          rules={[{ required: true, message: 'Please input your password!' }]}
-        >
-          <Input.Password />
-        </Form.Item>
+          <Form.Item<SignTypes>
+            label='Password'
+            name='password'
+            style={{ marginBottom: '12px' }}
+            rules={[{ required: true }]}
+          >
+            <Input.Password placeholder='******' size='large' />
+          </Form.Item>
 
-        <Form.Item<SignTypes> name='remember' valuePropName='checked'>
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item>
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button type='primary' htmlType='submit'>
+          <Form.Item<SignTypes>
+            name='remember'
+            valuePropName='checked'
+            style={{ marginBottom: '12px' }}
+          >
+            <Checkbox>Remember me</Checkbox>
+          </Form.Item>
+          <Button
+            size='large'
+            type='primary'
+            htmlType='submit'
+            className='w-full'
+          >
             Submit
           </Button>
-        </Form.Item>
-      </Form>
+        </Form>
+      </Card>
     </>
   );
 }
