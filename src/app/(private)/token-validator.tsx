@@ -39,7 +39,7 @@ const TokenValidationChecker = ({
   // Check if the user is logged in
   const { isLoading, isError, error } = useUser();
   const router = useRouter();
-
+  console.log(error);
   if (isLoading) {
     return <Loading />;
   }
