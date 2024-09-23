@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 import { RedirectType, redirect } from 'next/navigation';
-import TokenValidationChecker from './token-validator';
+// import TokenValidationChecker from './token-validator';
 
 export default function PrivateLayout({
   children,
@@ -13,5 +13,5 @@ export default function PrivateLayout({
     redirect('/', RedirectType.replace);
   }
 
-  return <TokenValidationChecker>{children}</TokenValidationChecker>;
+  return <>{children}</>;
 }
