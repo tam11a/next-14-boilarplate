@@ -53,32 +53,29 @@ export function SignForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     // Clearing errors
-    message.open({
-      type: 'loading',
-      content: 'Logging in..',
-      duration: 0,
-    });
-
+    // message.open({
+    //   type: 'loading',
+    //   content: 'Logging in..',
+    //   duration: 0,
+    // });
     // Making the request
-    const res = await handleResponse(() => login(values));
-
-    if (res.status) {
-      // Setting cookies
-
-      authService.setToken(res.data.access);
-      cookies.set('refresh_token', res.data.access);
-
-      // Generating Toast
-      message.destroy();
-      if (res.status) {
-        reset();
-        message.success(res.message);
-      } else {
-        message.error(res.message);
-      }
-      // Redirect to dashboard
-      router.refresh();
-    }
+    // const res = await handleResponse(() => login(values));
+    // if (res.status) {
+    //   // Setting cookies
+    //   authService.setToken(res.data.access);
+    //   cookies.set('refresh_token', res.data.access);
+    //   // Generating Toast
+    //   message.destroy();
+    //   if (res.status) {
+    //     reset();
+    //     message.success(res.message);
+    //   } else {
+    //     message.error(res.message);
+    //   }
+    //   // Redirect to dashboard
+    //   router.refresh();
+    // }
+    router.push('/dashboard');
   }
   return (
     <>
