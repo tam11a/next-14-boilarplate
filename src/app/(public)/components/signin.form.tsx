@@ -4,27 +4,14 @@ import React from 'react';
 import { Button, Card, Checkbox, Form, Input, message } from 'antd';
 import { Controller, FieldValues, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import { useCookies } from 'next-client-cookies';
 import { useLogin } from '@/lib/actions/auth/sign-in';
 import { useRouter } from 'next/navigation';
 import { authService } from '@/lib/auth.service';
 import handleResponse from '@/lib/handle-response';
-
+const { Item, ErrorList } = Form;
 // Form Schema
-const formSchema = z.object({
-  username: z
-    .string()
-    .min(4, {
-      message: 'Username must be at least 6 characters.',
-    })
-    .max(155, {
-      message: 'Username must be at most 155 characters.',
-    }),
-  password: z.string().min(4, {
-    message: 'Password must be at least 6 characters.',
-  }),
-});
+import schema, { FormValues } from "./signin.schema"
 
 export function SignForm() {
   // Cookies Hook
@@ -41,8 +28,8 @@ export function SignForm() {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  } = useForm<FormValues>({
+    resolver: zodResolver(schema),
     defaultValues: {
       username: '',
       password: '',
@@ -51,7 +38,7 @@ export function SignForm() {
   console.log(errors);
   // Form Hook
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: FormValues) {
     // Clearing errors
     message.open({
       type: 'loading',
@@ -89,7 +76,6 @@ export function SignForm() {
         </p>
       </div>
       <Card className='shadow-md'>
-        {/* <form onSubmit={handleSubmit(onSubmit)}> */}
         <Form
           layout='vertical'
           className='font-semibold'
@@ -99,17 +85,15 @@ export function SignForm() {
           <Controller
             control={control}
             name={'username'}
-            rules={{ required: true }}
             render={({
               field: { onChange, onBlur, value },
               fieldState: { error },
             }) => (
               <>
-                <Form.Item<SignTypes>
+                <Item<FormValues>
                   label='Username'
                   name='username'
                   style={{ marginBottom: '12px' }}
-                  rules={[{ required: true }]}
                 >
                   <Input
                     placeholder='JhonDoe12'
@@ -119,24 +103,26 @@ export function SignForm() {
                     value={value}
                     status={error ? 'error' : ''}
                   />
-                </Form.Item>
+                  <ErrorList
+                  className='text-red-500'
+                  fieldId='username'
+                  errors={[error?.message]}/>
+                </Item>
               </>
             )}
           />
           <Controller
             control={control}
             name={'password'}
-            rules={{ required: true }}
             render={({
               field: { onChange, onBlur, value },
               fieldState: { error },
             }) => (
               <>
-                <Form.Item<SignTypes>
+                <Item<FormValues>
                   label='Password'
                   name='password'
                   style={{ marginBottom: '12px' }}
-                  rules={[{ required: true }]}
                 >
                   <Input.Password
                     placeholder='******'
@@ -146,7 +132,11 @@ export function SignForm() {
                     value={value}
                     status={error ? 'error' : ''}
                   />
-                </Form.Item>
+                  <ErrorList
+                  className='text-red-500'
+                  fieldId='password'
+                  errors={[error?.message]}/>
+                </Item>
               </>
             )}
           />
@@ -159,7 +149,6 @@ export function SignForm() {
             Submit
           </Button>
         </Form>
-        {/* </form> */}
       </Card>
     </>
   );
