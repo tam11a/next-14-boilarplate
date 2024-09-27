@@ -11,7 +11,7 @@ import { authService } from '@/lib/auth.service';
 import handleResponse from '@/lib/handle-response';
 const { Item, ErrorList } = Form;
 // Form Schema
-import schema, { FormValues } from "./signin.schema"
+import schema, { FormValues } from './signin.schema';
 
 export function SignForm() {
   // Cookies Hook
@@ -92,21 +92,23 @@ export function SignForm() {
               <>
                 <Item<FormValues>
                   label='Username'
-                  name='username'
                   style={{ marginBottom: '12px' }}
                 >
-                  <Input
-                    placeholder='JhonDoe12'
-                    size='large'
-                    onChange={onChange}
-                    onBlur={onBlur}
-                    value={value}
-                    status={error ? 'error' : ''}
-                  />
+                  <Item name='username' noStyle>
+                    <Input
+                      placeholder='JhonDoe12'
+                      size='large'
+                      onChange={onChange}
+                      onBlur={onBlur}
+                      value={value}
+                      status={error ? 'error' : ''}
+                    />
+                  </Item>
                   <ErrorList
-                  className='text-red-500'
-                  fieldId='username'
-                  errors={[error?.message]}/>
+                    className='text-red-500'
+                    fieldId='username'
+                    errors={[error?.message]}
+                  />
                 </Item>
               </>
             )}
@@ -121,21 +123,23 @@ export function SignForm() {
               <>
                 <Item<FormValues>
                   label='Password'
-                  name='password'
                   style={{ marginBottom: '12px' }}
                 >
-                  <Input.Password
-                    placeholder='******'
-                    size='large'
-                    onChange={onChange}
-                    onBlur={onBlur}
-                    value={value}
-                    status={error ? 'error' : ''}
-                  />
+                  <Item name='password' noStyle>
+                    <Input.Password
+                      placeholder='******'
+                      size='large'
+                      onChange={onChange}
+                      onBlur={onBlur}
+                      value={value}
+                      status={error ? 'error' : ''}
+                    />
+                  </Item>
                   <ErrorList
-                  className='text-red-500'
-                  fieldId='password'
-                  errors={[error?.message]}/>
+                    className='text-red-500'
+                    fieldId='password'
+                    errors={[error?.message]}
+                  />
                 </Item>
               </>
             )}
