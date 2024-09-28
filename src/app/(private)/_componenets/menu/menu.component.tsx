@@ -1,18 +1,19 @@
 'use client';
 
-import { Menu as AntMenu, MenuProps } from 'antd';
+import { Menu as AntMenu } from 'antd';
 import { items } from './menu.item';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 export default function Menu() {
   const router = useRouter();
+  const link = usePathname();
 
   return (
     <AntMenu
       onSelect={(e) => router.push(e.key)}
-      style={{ width: 256 }}
-      defaultSelectedKeys={['1']}
-      defaultOpenKeys={['sub1']}
+      style={{ borderRight: 'none' }}
+      defaultSelectedKeys={[link.slice(1)]}
+      defaultOpenKeys={[link.slice(1)]}
       mode='inline'
       items={items}
     />
