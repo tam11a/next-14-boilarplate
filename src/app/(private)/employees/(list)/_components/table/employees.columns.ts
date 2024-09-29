@@ -19,7 +19,7 @@ const columns: columnsInterface = {
   trash: [
     {
       field: 'col1',
-      headerName: 'Column 1',
+      headerName: 'Trash Column 1',
     },
     {
       field: 'col2',
