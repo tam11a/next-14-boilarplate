@@ -1,4 +1,7 @@
+import Image from 'next/image';
 import Menu from '../menu/menu.component';
+import Link from 'next/link';
+import { Button } from 'antd';
 
 export default function AppDrawer() {
   return (
@@ -10,7 +13,7 @@ export default function AppDrawer() {
         className={'flex flex-row items-center justify-between gap-3 px-3 py-2'}
       >
         <p>Work In-progress</p>
-        {/* <Avatar
+        {/* <Image
               variant="rounded"
               src={display_picture}
               {...stringAvatar(`${first_name} ${last_name}`)}
@@ -39,9 +42,9 @@ export default function AppDrawer() {
               }}
             />
             <Link to={"/app/settings"}>
-              <IconButton color="secondary">
+              <Button color="secondary">
                 <Icon icon={"solar:settings-bold-duotone"} />
-              </IconButton>
+              </Button>
             </Link> */}
       </div>
     </>

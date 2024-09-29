@@ -1,27 +1,68 @@
 import { MenuProps } from 'antd';
 
 //Icons import
-import { LuLayoutDashboard } from 'react-icons/lu';
+import {
+  LuBarChart4,
+  LuLayoutDashboard,
+  LuTags,
+  LuUsers,
+} from 'react-icons/lu';
+import { PiPackage } from 'react-icons/pi';
+import { MdInsertChartOutlined } from 'react-icons/md';
+import { TbCategory2 } from 'react-icons/tb';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
 export const items: MenuItem[] = [
   {
-    key: 'dashboard',
-    label: 'Dashboard',
-    icon: <LuLayoutDashboard style={{ fontSize: '20px' }} />,
-    // children: [],
+    key: 'overview',
+    label: 'Overview',
+    type: 'group',
+    children: [
+      {
+        key: 'dashboard',
+        label: 'Dashboard',
+        icon: <LuBarChart4 style={{ fontSize: '20px' }} />,
+      },
+    ],
   },
   {
-    key: 'employee',
-    label: 'Employee',
+    key: 'inventory',
+    label: 'Inventory',
+    type: 'group',
+    children: [
+      {
+        key: 'products',
+        label: 'Products',
+        icon: <PiPackage style={{ fontSize: '20px' }} />,
+      },
+      {
+        key: 'category',
+        label: 'Category',
+        icon: <TbCategory2 style={{ fontSize: '20px' }} />,
+      },
+      {
+        key: 'brand',
+        label: 'Brand',
+        icon: <LuTags style={{ fontSize: '20px' }} />,
+      },
+    ],
+  },
+  {
+    key: 'organization',
+    label: 'Organization',
+    type: 'group',
     children: [
       {
         key: 'employees',
-        label: 'All Employees',
+        label: 'Employees',
+        icon: <LuUsers style={{ fontSize: '20px' }} />,
+      },
+      {
+        key: 'roles',
+        label: 'Roles',
         icon: <LuLayoutDashboard />,
       },
-      { key: 'active', label: 'Active Employees' },
     ],
   },
 ];
