@@ -3,13 +3,14 @@ import { MenuProps } from 'antd';
 //Icons import
 import {
   LuBarChart4,
-  LuLayoutDashboard,
+  LuLogOut,
+  LuSettings,
   LuTags,
   LuUsers,
 } from 'react-icons/lu';
 import { PiPackage } from 'react-icons/pi';
-import { MdInsertChartOutlined } from 'react-icons/md';
-import { TbCategory2 } from 'react-icons/tb';
+import { TbCategory2, TbReportAnalytics } from 'react-icons/tb';
+import { FaRegIdBadge } from 'react-icons/fa6';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -56,12 +57,36 @@ export const items: MenuItem[] = [
       {
         key: 'employees',
         label: 'Employees',
-        icon: <LuUsers style={{ fontSize: '20px' }} />,
+        icon: <LuUsers style={{ fontSize: '18px' }} />,
       },
       {
         key: 'roles',
         label: 'Roles',
-        icon: <LuLayoutDashboard />,
+        icon: <FaRegIdBadge style={{ fontSize: '18px' }} />,
+      },
+      {
+        key: 'reports',
+        label: 'Reports',
+        icon: <TbReportAnalytics style={{ fontSize: '20px' }} />,
+      },
+    ],
+  },
+
+  {
+    key: 'user',
+    label: 'User',
+    type: 'group',
+    children: [
+      {
+        key: 'settings',
+        label: 'Settings',
+        icon: <LuSettings style={{ fontSize: '20px' }} />,
+      },
+      {
+        key: 'signout',
+        label: 'Signout',
+        danger: true,
+        icon: <LuLogOut style={{ fontSize: '20px' }} />,
       },
     ],
   },
