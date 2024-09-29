@@ -1,4 +1,5 @@
-import TabsLayout from './layout.tabs';
+import LayoutStore from './layout.store';
+import LayoutTabs from './layout.tabs';
 
 export default function ListLayout({
   children,
@@ -6,11 +7,9 @@ export default function ListLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
-      <main>
-        <TabsLayout />
-        <section>{children}</section>
-      </main>
-    </>
+    <LayoutStore>
+      <LayoutTabs />
+      <section>{children}</section>
+    </LayoutStore>
   );
 }

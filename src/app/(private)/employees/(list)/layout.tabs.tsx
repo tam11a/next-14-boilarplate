@@ -1,14 +1,9 @@
 'use client';
 import { Tabs } from 'antd';
-import { useQueryState, parseAsString } from 'nuqs';
+import { useLayout } from './layout.store';
 
-export default function TabsLayout() {
-  const [tab, setTab] = useQueryState(
-    'tab',
-    parseAsString.withDefault('list').withOptions({
-      clearOnDefault: true,
-    })
-  );
+export default function LayoutTabs() {
+  const { tab, setTab } = useLayout();
 
   return (
     <>
@@ -20,25 +15,15 @@ export default function TabsLayout() {
           {
             key: 'list',
             tabKey: 'Employees',
-            label: 'Employees',
+            label: 'All Employees',
           },
           {
             key: 'trash',
             tabKey: 'Trash',
             label: 'Trash',
           },
-          {
-            key: 'create',
-            tabKey: 'Create',
-            label: 'Create',
-          },
-          {
-            key: 'import',
-            tabKey: 'Import',
-            label: 'Import',
-          },
         ]}
-        className='[.ant-tabs-nav-wrap]:items-center'
+        centered
       />
     </>
   );

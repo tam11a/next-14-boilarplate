@@ -4,7 +4,7 @@ import { Outfit } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
-import TanstackContexts from './tanstack-context';
+import TanstackContexts from './layout.client';
 import { CookiesProvider } from 'next-client-cookies/server';
 
 const fontSans = Outfit({
