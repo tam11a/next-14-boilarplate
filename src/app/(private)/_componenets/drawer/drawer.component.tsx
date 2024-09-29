@@ -1,7 +1,7 @@
-import Image from 'next/image';
-import Menu from '../menu/menu.component';
-import Link from 'next/link';
-import { Button } from 'antd';
+// import Image from 'next/image';
+import Menu from './menu.component';
+// import Link from 'next/link';
+// import { Button } from 'antd';
 
 export default function AppDrawer() {
   return (
