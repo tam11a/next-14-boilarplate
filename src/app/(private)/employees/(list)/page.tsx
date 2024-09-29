@@ -1,4 +1,4 @@
-import EmployeesTable from './_components/employees.table';
+import EmployeesTable from './_components/table/employees.table';
 
 export default function Employee() {
   return (

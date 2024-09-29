@@ -1,5 +1,5 @@
-import LayoutStore from './layout.store';
-import LayoutTabs from './layout.tabs';
+import LayoutStore from './_components/context/layout.store';
+import LayoutTabs from './_components/navigation/employees.tabs';
 
 export default function ListLayout({
   children,

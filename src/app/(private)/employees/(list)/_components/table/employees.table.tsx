@@ -1,7 +1,7 @@
 'use client';
 
 import { DataGrid, GridRowsProp } from '@mui/x-data-grid';
-import { useLayout } from '../layout.store';
+import { useLayout } from '../context/layout.store';
 import columns from './employees.columns';
 
 const rows: GridRowsProp = [
