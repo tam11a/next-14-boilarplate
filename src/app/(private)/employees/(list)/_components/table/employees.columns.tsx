@@ -3,7 +3,7 @@
 import { GridActionsCellItem, GridColDef } from '@mui/x-data-grid';
 import { Button } from 'antd';
 import { FiEdit2 } from 'react-icons/fi';
-import { LuShieldCheck, LuShieldOff } from 'react-icons/lu';
+import { LuShieldCheck, LuShieldOff, LuArchiveRestore } from 'react-icons/lu';
 import { AiTwotoneDelete, AiFillDelete } from 'react-icons/ai';
 
 interface columnsInterface {
@@ -166,7 +166,7 @@ const columns: columnsInterface = {
         />,
         <GridActionsCellItem
           key={params.id}
-          icon={<AiTwotoneDelete className='text-lg' />}
+          icon={<LuArchiveRestore className='text-lg' />}
           label='Restore'
         />,
         <GridActionsCellItem
