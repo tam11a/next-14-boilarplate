@@ -149,6 +149,7 @@ export function SignForm() {
             type='primary'
             htmlType='submit'
             className='w-full'
+            disabled={isPending}
           >
             Submit
           </Button>
