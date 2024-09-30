@@ -9,6 +9,8 @@ interface LayoutInterface {
   setTab: (tab: string) => void;
   filter: FilterValues;
   setFilter: (filter: FilterValues) => void;
+  search: string;
+  setSearch: (search: string) => void;
 }
 
 const defaultValues: LayoutInterface = {
@@ -16,6 +18,8 @@ const defaultValues: LayoutInterface = {
   setTab: () => {},
   filter: {},
   setFilter: () => {},
+  search: '',
+  setSearch: () => {},
 };
 
 const LayoutContext = createContext<LayoutInterface>(defaultValues);
@@ -28,6 +32,13 @@ export default function LayoutStore({
   const [tab, setTab] = useQueryState(
     'tab',
     parseAsString.withDefault('list').withOptions({
+      clearOnDefault: true,
+    })
+  );
+
+  const [search, setSearch] = useQueryState(
+    'search',
+    parseAsString.withDefault('').withOptions({
       clearOnDefault: true,
     })
   );
@@ -46,6 +57,8 @@ export default function LayoutStore({
         setTab,
         filter,
         setFilter,
+        search,
+        setSearch,
         // Add your context values here
       }}
     >
