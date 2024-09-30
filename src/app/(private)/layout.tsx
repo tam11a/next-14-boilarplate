@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import { RedirectType, redirect } from 'next/navigation';
 import AppDrawer from './_componenets/drawer/drawer.component';
-// import TokenValidationChecker from './token-validator';
+import TokenValidationChecker from './token-validator';
 
 export default function PrivateLayout({
   children,
@@ -15,7 +15,7 @@ export default function PrivateLayout({
   }
 
   return (
-    <>
+    <TokenValidationChecker>
       <div className='flex h-screen flex-col lg:flex-row lg:gap-6 lg:bg-slate-200 lg:p-6'>
         <aside className='relative hidden max-w-[360px] flex-[0.40] flex-col overflow-hidden rounded-md bg-white p-4 pb-0 lg:flex'>
           <AppDrawer />
@@ -25,6 +25,6 @@ export default function PrivateLayout({
           {children}
         </main>
       </div>
-    </>
+    </TokenValidationChecker>
   );
 }

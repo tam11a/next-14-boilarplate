@@ -6,7 +6,7 @@ const useUser = () => {
   const { data, isLoading, isError, error } = useCurrentUser();
 
   return {
-    user: data,
+    user: data?.data,
     isLoading,
     isError,
     error,
