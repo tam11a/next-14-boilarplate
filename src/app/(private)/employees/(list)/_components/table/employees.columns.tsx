@@ -133,10 +133,13 @@ const columns: columnsInterface = {
         <GridActionsCellItem
           key={params.id}
           icon={
-            <SuspendButton id={params.id} is_active={params.row.is_active} />
+            <SuspendButton
+              id={params.id}
+              is_active={params.row.user.is_active}
+            />
           }
           label={
-            params.row.is_active ? 'Suspend Employee' : 'Activate Employee'
+            params.row.user.is_active ? 'Suspend Employee' : 'Activate Employee'
           }
         />,
         <GridActionsCellItem
@@ -187,10 +190,13 @@ const columns: columnsInterface = {
         <GridActionsCellItem
           key={params.id}
           icon={
-            <SuspendButton id={params.id} is_active={params.row.is_active} />
+            <SuspendButton
+              id={params.id}
+              is_active={params.row.user.is_active}
+            />
           }
           label={
-            params.row.is_active ? 'Suspend Employee' : 'Activate Employee'
+            params.row.user.is_active ? 'Suspend Employee' : 'Activate Employee'
           }
         />,
         <GridActionsCellItem

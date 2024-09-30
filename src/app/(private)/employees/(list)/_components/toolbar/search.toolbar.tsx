@@ -9,7 +9,7 @@ export default function SearchToolbar() {
   return (
     <Input
       placeholder='Search employees'
-      className='max-w-xs'
+      className='md:max-w-xs'
       suffix={<LuSearch className='text-lg' />}
       value={search}
       allowClear
