@@ -10,7 +10,7 @@ export default function Menu() {
 
   return (
     <AntMenu
-      onSelect={(e) => router.push(e.key)}
+      onSelect={(e) => router.push(`/${e.key}`)}
       style={{ borderRight: 'none', fontWeight: 'normal' }}
       defaultSelectedKeys={[link.slice(1)]}
       defaultOpenKeys={[link.slice(1)]}

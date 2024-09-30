@@ -38,8 +38,6 @@ export default function EmployeesTable() {
         rows={rows}
         density='compact'
         rowSelection={false}
-        // showCellVerticalBorder
-        // showColumnVerticalBorder
         loading={isLoading}
         disableColumnSorting
         disableColumnMenu
@@ -49,7 +47,7 @@ export default function EmployeesTable() {
         paginationMode='server'
         scrollbarSize={10}
         rowCount={pagination.count}
-        onRowDoubleClick={(row) => router.push(`/employees/i/${row.id}`)}
+        onRowDoubleClick={(row) => router.push(`/employees/${row.id}`)}
         classes={{
           'row--borderBottom': '!hidden',
         }}

@@ -108,7 +108,7 @@ const columns: columnsInterface = {
           disableFocusRipple
           className='hover: bg-transparent'
           icon={
-            <Link href={`/employees/i/${params.id}`}>
+            <Link href={`/employees/${params.id}`}>
               <Button type='dashed' size={'small'}>
                 View
               </Button>
@@ -119,7 +119,7 @@ const columns: columnsInterface = {
         <GridActionsCellItem
           key={params.id}
           icon={
-            <Link href={`/employees/i/${params.id}/edit`}>
+            <Link href={`/employees/${params.id}/edit`}>
               <FiEdit2 className='text-lg' />
             </Link>
           }
@@ -165,7 +165,7 @@ const columns: columnsInterface = {
           disableFocusRipple
           className='hover: bg-transparent'
           icon={
-            <Link href={`/employees/i/${params.id}`}>
+            <Link href={`/employees/${params.id}`}>
               <Button type='dashed' size={'small'}>
                 View
               </Button>
@@ -176,7 +176,7 @@ const columns: columnsInterface = {
         <GridActionsCellItem
           key={params.id}
           icon={
-            <Link href={`/employees/i/${params.id}/edit`}>
+            <Link href={`/employees/${params.id}/edit`}>
               <FiEdit2 className='text-lg' />
             </Link>
           }

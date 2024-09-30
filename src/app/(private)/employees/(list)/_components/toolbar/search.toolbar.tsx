@@ -6,6 +6,7 @@ import { useLayout } from '../context/layout.store';
 
 export default function SearchToolbar() {
   const { search, setSearch } = useLayout();
+
   return (
     <Input
       placeholder='Search employees'
