@@ -3,8 +3,11 @@
 import { GridActionsCellItem, GridColDef } from '@mui/x-data-grid';
 import { Button } from 'antd';
 import { FiEdit2 } from 'react-icons/fi';
-import { LuShieldCheck, LuShieldOff, LuArchiveRestore } from 'react-icons/lu';
-import { AiTwotoneDelete, AiFillDelete } from 'react-icons/ai';
+import Link from 'next/link';
+import DeleteButton from './action_items/delete.button';
+import RestoreButton from './action_items/restore.button';
+import PermanentDeleteButton from './action_items/permanent_delete.button';
+import SuspendButton from './action_items/suspend.button';
 
 interface columnsInterface {
   all: GridColDef[];
@@ -18,6 +21,8 @@ const commonColumns: GridColDef[] = [
     description: "Employee's ID",
     headerAlign: 'center',
     align: 'center',
+    width: 50,
+    flex: 1,
   },
   {
     headerName: 'Full Name',
@@ -94,7 +99,7 @@ const columns: columnsInterface = {
       field: 'actions',
       type: 'actions',
       flex: 1,
-      minWidth: 160,
+      minWidth: 250,
       getActions: (params) => [
         <GridActionsCellItem
           key={params.id}
@@ -103,41 +108,40 @@ const columns: columnsInterface = {
           disableFocusRipple
           className='hover: bg-transparent'
           icon={
-            <Button type='dashed' size={'small'}>
-              View
-            </Button>
+            <Link href={`/employees/i/${params.id}`}>
+              <Button type='dashed' size={'small'}>
+                View
+              </Button>
+            </Link>
           }
           label='Details'
         />,
         <GridActionsCellItem
           key={params.id}
-          icon={<FiEdit2 className='text-lg' />}
+          icon={
+            <Link href={`/employees/i/${params.id}/edit`}>
+              <FiEdit2 className='text-lg' />
+            </Link>
+          }
           label='Edit'
         />,
         <GridActionsCellItem
           key={params.id}
+          icon={<DeleteButton id={params.id} />}
+          label='Delete'
+        />,
+        <GridActionsCellItem
+          key={params.id}
           icon={
-            params.row.is_active ? (
-              <LuShieldOff className='text-lg' />
-            ) : (
-              <LuShieldCheck className='text-lg' />
-            )
+            <SuspendButton id={params.id} is_active={params.row.is_active} />
           }
-          showInMenu
           label={
             params.row.is_active ? 'Suspend Employee' : 'Activate Employee'
           }
         />,
         <GridActionsCellItem
           key={params.id}
-          icon={<AiTwotoneDelete className='text-lg' />}
-          showInMenu
-          label='Delete'
-        />,
-        <GridActionsCellItem
-          key={params.id}
-          icon={<AiFillDelete className='text-lg' />}
-          showInMenu
+          icon={<PermanentDeleteButton id={params.id} />}
           label='Permanently Delete'
         />,
       ],
@@ -149,7 +153,7 @@ const columns: columnsInterface = {
       field: 'actions',
       type: 'actions',
       flex: 1,
-      minWidth: 160,
+      minWidth: 250,
       getActions: (params) => [
         <GridActionsCellItem
           key={params.id}
@@ -158,41 +162,40 @@ const columns: columnsInterface = {
           disableFocusRipple
           className='hover: bg-transparent'
           icon={
-            <Button type='dashed' size={'small'}>
-              View
-            </Button>
+            <Link href={`/employees/i/${params.id}`}>
+              <Button type='dashed' size={'small'}>
+                View
+              </Button>
+            </Link>
           }
           label='Details'
         />,
         <GridActionsCellItem
           key={params.id}
-          icon={<LuArchiveRestore className='text-lg' />}
-          label='Restore'
-        />,
-        <GridActionsCellItem
-          key={params.id}
-          showInMenu
-          icon={<FiEdit2 className='text-lg' />}
+          icon={
+            <Link href={`/employees/i/${params.id}/edit`}>
+              <FiEdit2 className='text-lg' />
+            </Link>
+          }
           label='Edit'
         />,
         <GridActionsCellItem
           key={params.id}
+          icon={<RestoreButton id={params.id} />}
+          label='Restore'
+        />,
+        <GridActionsCellItem
+          key={params.id}
           icon={
-            params.row.is_active ? (
-              <LuShieldOff className='text-lg' />
-            ) : (
-              <LuShieldCheck className='text-lg' />
-            )
+            <SuspendButton id={params.id} is_active={params.row.is_active} />
           }
-          showInMenu
           label={
             params.row.is_active ? 'Suspend Employee' : 'Activate Employee'
           }
         />,
         <GridActionsCellItem
           key={params.id}
-          icon={<AiFillDelete className='text-lg' />}
-          showInMenu
+          icon={<PermanentDeleteButton id={params.id} />}
           label='Permanently Delete'
         />,
       ],

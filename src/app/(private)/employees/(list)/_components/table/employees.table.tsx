@@ -6,8 +6,10 @@ import columns from './employees.columns';
 import { useGetEmployeeList } from '@/lib/actions/employee/list.get';
 import { useMemo } from 'react';
 import { cn } from '@/lib/utils';
+import { useRouter } from 'next/navigation';
 
 export default function EmployeesTable() {
+  const router = useRouter();
   const { tab } = useLayout();
   const { data, isLoading } = useGetEmployeeList({
     // trash: tab === 'trash',
@@ -41,20 +43,22 @@ export default function EmployeesTable() {
         loading={isLoading}
         disableColumnSorting
         disableColumnMenu
+        disableRowSelectionOnClick
         hideFooterSelectedRowCount
         autoHeight
         paginationMode='server'
         scrollbarSize={10}
         rowCount={pagination.count}
+        onRowDoubleClick={(row) => router.push(`/employees/i/${row.id}`)}
         classes={{
           'row--borderBottom': '!hidden',
         }}
         getRowClassName={(params) =>
           cn(
-            params.indexRelativeToCurrentPage % 2 === 0
+            params.indexRelativeToCurrentPage % 2 !== 0
               ? 'bg-white'
-              : 'bg-slate-50',
-            'hover:bg-slate-100 !border-slate-100'
+              : 'bg-slate-100',
+            'hover:bg-slate-50'
           )
         }
       />
