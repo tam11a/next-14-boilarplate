@@ -5,6 +5,7 @@ import { useLayout } from '../context/layout.store';
 import columns from './employees.columns';
 import { useGetEmployeeList } from '@/lib/actions/employee/list.get';
 import { useMemo } from 'react';
+import { cn } from '@/lib/utils';
 
 export default function EmployeesTable() {
   const { tab } = useLayout();
@@ -30,7 +31,7 @@ export default function EmployeesTable() {
   return (
     <div className='min-h-96 w-full'>
       <DataGrid
-        className='!min-h-96 !border-slate-100'
+        className='!min-h-96 !border-slate-200'
         columns={tab === 'trash' ? columns.trash : columns.all}
         rows={rows}
         density='compact'
@@ -45,10 +46,16 @@ export default function EmployeesTable() {
         paginationMode='server'
         scrollbarSize={10}
         rowCount={pagination.count}
+        classes={{
+          'row--borderBottom': '!hidden',
+        }}
         getRowClassName={(params) =>
-          params.indexRelativeToCurrentPage % 2 === 0
-            ? 'bg-white'
-            : 'bg-slate-100'
+          cn(
+            params.indexRelativeToCurrentPage % 2 === 0
+              ? 'bg-white'
+              : 'bg-slate-50',
+            'hover:bg-slate-100 !border-slate-100'
+          )
         }
       />
     </div>
