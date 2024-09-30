@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-export default function TanstackContexts({
+export default function ClientLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   // ✅ this is stable

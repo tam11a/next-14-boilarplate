@@ -26,7 +26,7 @@ instance.interceptors.request.use((configuration) => {
   // Check if the token exists in cookies
   const token = authService.getToken();
   if (token) {
-    configuration.headers.Authorization = token;
+    configuration.headers.Authorization = `Bearer ${token}`;
   }
 
   // configuration.headers.set("x-api-key", crypto?.encryptKey?.(config.xApiKey));
